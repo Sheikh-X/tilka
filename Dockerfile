@@ -1,8 +1,8 @@
-FROM node:alpine
+FROM node:16-alpine
 
-RUN mkdir -p /usr/src/node-app && chown -R node:node /usr/src/node-app
+RUN mkdir -p /usr/src/tilka-app && chown -R node:node /usr/src/tilka-app
 
-WORKDIR /usr/src/node-app
+WORKDIR /usr/src/tilka-app
 
 COPY package.json yarn.lock ./
 

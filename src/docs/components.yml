@@ -1,5 +1,46 @@
 components:
   schemas:
+    Author:
+      type: object
+      properties:
+        id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        email:
+          type: string
+          format: email
+      example:
+        first_name: John
+        last_name: Graham
+        email: john.graham@yopmail.com
+    Book:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        pages:
+          type: integer
+        isbn:
+          type: string
+        genre:
+          type: string
+        author_id:
+          type: integer
+      example:
+        id: 1
+        title: The Spy Who Loved Me
+        description: A gripping thriller published by John Graham
+        pages: 45678
+        isbn: '9783161484100'
+        genre: drama
+        author_id: 1
     User:
       type: object
       properties:

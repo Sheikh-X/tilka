@@ -1,31 +1,35 @@
 version: '3'
 
 services:
-  node-app:
+  tilka-app:
     build: .
-    image: node-app
+    image: tilka
     environment:
-      - MONGODB_URL=mongodb://mongodb:27017/node-boilerplate
+      - DATABASE_URL=postgres://postgresuser:password@postgresdb:5432/tilka
     ports:
       - '3000:3000'
     depends_on:
-      - mongodb
+      - postgres
     volumes:
-      - .:/usr/src/node-app
+      - .:/usr/src/tilka
     networks:
       - node-network
 
-  mongodb:
-    image: mongo:4.2.1-bionic
+  postgres:
+    image: postgres:13
     ports:
-      - '27017:27017'
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: tilka
+      POSTGRES_USER: postgresuser
+      POSTGRES_PASSWORD: password
     volumes:
-      - dbdata:/data/db
+      - pgdata:/var/lib/postgresql/data
     networks:
       - node-network
 
 volumes:
-  dbdata:
+  pgdata:
 
 networks:
   node-network:
